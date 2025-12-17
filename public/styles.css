@@ -1,0 +1,249 @@
+:root {
+  --bg: #0b0b10;
+  --panel: rgba(255, 255, 255, 0.06);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.72);
+  --border: rgba(255, 255, 255, 0.14);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0b0b10; /* your original black base */
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  position: relative; /* needed for layering */
+  isolation: isolate; /* ensures z-index layering behaves */
+}
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+a[href^="mailto:"] {
+  color: var(--text);
+  text-decoration: underline;
+  font-style: italic;
+}
+/* Background image (texture) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("/images/blacksunepcover.png"); /* <-- keep your correct path */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 220%; /* zoom amount: try 160%–280% */
+  opacity: 0.35; /* strength of texture */
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Dark overlay to keep text readable */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62); /* adjust 0.45–0.75 */
+  z-index: -1;
+  pointer-events: none;
+}
+.page { min-height: 100vh; }
+
+.hero {
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+}
+.hero {
+  margin-bottom: 22px;
+}
+.hero__img {
+  width: 100%;
+  height: clamp(220px, 40vh, 520px);
+  object-fit: cover;
+  object-position: 50% 72%; /* try: center, top, bottom, 30% 30% */
+}
+
+  display: block;
+}
+
+.content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 18px 56px;
+  display: grid;
+  gap: 22px;
+}
+
+.titlemark {
+  display: flex;
+  justify-content: center;
+  padding-top: 0px;
+}
+.titlemark__img {
+  max-width: min(680px, 92vw);
+  height: auto;
+  display: block;
+}
+.titlemark {
+  margin-bottom: 22px;
+}
+
+section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px 16px;
+  backdrop-filter: blur(6px);
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+p { margin: 0; line-height: 1.6; color: var(--text); }
+
+.presave__row {
+  display: grid;
+  gap: 12px;
+}
+@media (min-width: 720px) {
+  .presave__row {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(255,255,255,0.08);
+}
+
+.presave__desc { color: var(--muted); }
+
+.links__grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr; /* always one column */
+}
+
+.linkcard {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(0,0,0,0.14);
+}
+.linkcard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(0,0,0,0.14);
+}
+
+.linkcard__icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+.linkcard:hover,
+.button:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  opacity: 0.9;
+  margin-top: 6px;
+}
+
+.titlemark {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 18px 56px;
+}
+.bio p + p {
+  margin-top: 12px;
+}
+.bio {
+  text-align: center;
+}
+.ep__top {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 720px) {
+  .ep__top {
+    grid-template-columns: minmax(260px, 1fr) 2fr;
+    align-items: start;
+  }
+}
+
+.ep__art {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  align-self: start;
+}
+
+.ep__title {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.ep__info p + p {
+  margin-top: 12px;
+}
+
+.ep__tracksTitle {
+  margin: 16px 0 10px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ep__tracklist {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.ep__tracklist li {
+  color: var(--text);
+}
