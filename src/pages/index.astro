@@ -6,11 +6,15 @@ const presave = {
 };
 
 const links = [
-  { label: "Spotify", href: "", icon: "/icons/spotify.svg" },
-  { label: "Instagram", href: "https://www.instagram.com/travellerprojectmusic/reels/", icon: "/icons/instagram.svg" },
+  { label: "Bandcamp", href: "", icon: "/icons/bandcamp.svg" },
+  { label: "Spotify", href: "https://open.spotify.com/artist/7abQsJjZoo5OOd3J2QNQil?si=S-XEpKvQRtqOlyWR06ODlQ", icon: "/icons/spotify.svg" },
+  { label: "Apple Music", href: "https://music.apple.com/gb/artist/the-traveller-project/1855606340", icon: "/icons/applemusic.svg" },
+  { label: "Tidal", href: "https://tidal.com/artist/70347746", icon: "/icons/tidal.svg" },
+  { label: "SoundCloud", href: "https://soundcloud.com/thetravellerproject-music", icon: "/icons/soundcloud.svg" },
+  { label: "Instagram", href: "https://www.instagram.com/travellerprojectmusic/", icon: "/icons/instagram.svg" },
   { label: "TikTok", href: "https://www.tiktok.com/@travellerproject", icon: "/icons/tiktok.svg" },
   { label: "Facebook", href: "https://www.facebook.com/travellerprojectmusic/", icon: "/icons/facebook.svg" },
-  { label: "SoundCloud", href: "https://soundcloud.com/travellerprojectmusic", icon: "/icons/soundcloud.svg" },
+  { label: "YouTube", href: "https://www.youtube.com/@TheTravellerProjectmusic", icon: "/icons/youtube.svg" },
 ];
 
 const ep = {
@@ -25,6 +29,29 @@ const ep = {
     "Blood Spirit",
   ],
 };
+
+const newsItems = [
+  {
+    date: "2026-01-05",
+    title: "Upcoming Release: Blood Spirit, 22nd Jan 2026",
+    meta: "A feel-good alt-rock song to take you through your day.",
+  },
+  {
+    date: "2026-01-04",
+    title: "Wanderer With No Name Acoustic Version",
+    meta: "A cosy, fireside version of Wanderer With No Name is live on YouTube.",
+  },
+  {
+    date: "2026-01-02",
+    title: "“Wanderer With No Name” is out now",
+    meta: "Available on all streaming platforms.",
+  },
+  {
+    date: "2025-11-30",
+    title: "The Black Sun EP announced",
+    meta: "Full release planned for February 2026. See below for more info.",
+  },
+];
 ---
 
 <html lang="en">
@@ -40,6 +67,15 @@ const ep = {
   </head>
 
   <body>
+
+<header class="topnav" aria-label="Site navigation">
+  <nav class="topnav__actions">
+    <a class="topnav__item" href="/">Home</a>
+    <a class="topnav__item" href="/merch/">Merch</a>
+    <!-- future: <a class="topnav__item" href="/shows/">Shows</a> etc -->
+  </nav>
+</header>
+
     <div class="page">
       <header class="hero">
         <img class="hero__img" src="/images/hero1.jpg" alt="The Traveller Project hero image" />
@@ -50,35 +86,77 @@ const ep = {
           <img class="titlemark__img" src="/images/TravProjText.png" alt="The Traveller Project" />
         </section>
 
-        <section class="bio">
-          <h2><strong>Welcome to The Traveller Project </strong></h2>
-          <p>
-            This is the official website for <strong>The Traveller Project</strong>, where you'll find updates on new music, events, artwork and major milestones. 
-	  </p>
-	  <p>
-The project focuses on emotional, abstract storytelling through music. Warm guitar tones and experimental electronica will take you on a journey through other worlds. The project explores a unique blend of genres to create a range of experiences, from intimate ambient soundscapes to anthemic rock. Inspirations include Gorillaz, Nick Drake, Tash Sultana, John Fruiscante and Massive Attack. Live shows range from acoustic sets to complex live looping setups.
-	  </p>
-	<p>
-All the music is set in a fictional universe with unique lore, settings, characters and stories. Artwork is in development. 
-          </p>
+<section class="links" aria-label="Links">
+  <ul class="links__grid">
+    {links.map((l) => (
+      <li>
+        <a
+          class="linkcard linkcard--icon"
+          href={l.href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={l.label}
+          title={l.label}
+        >
+          <img class="linkcard__icon" src={l.icon} alt="" aria-hidden="true" />
+          <span class="sr-only">{l.label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
         </section>
+<section class="bio bio--dropdown">
+  <details class="bio__details">
+    <summary class="bio__summary">
+      <h2><strong>The official website for The Traveller Project</strong></h2>
 
-        <section class="presave">
-          <h2>New releases</h2>
-          <div class="presave__row">
-<a
-  class="button"
-  href={presave.href}
-  target="_blank"
-  rel="noreferrer"
->
-  {presave.label}
-</a>
+      <p class="bio__intro">
+        This is your home for updates on new music, merch, events, artwork and major milestones.
+      </p>
 
-            </a>
-            <p class="presave__desc">{presave.desc}</p>
-          </div>
-        </section>
+      <p class="bio__cta bio__cta--open">Click here for more</p>
+    </summary>
+
+    <div class="bio__content">
+      <p>
+        The project focuses on emotional, abstract storytelling through music. Warm guitar tones and experimental electronica will take you on a journey through other worlds. The project explores a unique blend of genres to create a range of experiences, from intimate ambient soundscapes to anthemic rock. Inspirations include Gorillaz, Nick Drake, Tash Sultana, John Fruiscante and Massive Attack. Live shows range from acoustic sets to complex live looping setups.
+      </p>
+
+      <p>
+        All the music is set in a fictional universe with unique lore, settings, characters and stories. Artwork is in development.
+      </p>
+
+<p class="bio__minimise" data-bio-close>Click to minimise</p>
+
+    </div>
+  </details>
+</section>
+
+<section class="news" aria-label="News">
+  <div class="news__header">
+    <h2>News</h2>
+    <p class="news__hint">Scroll for older updates</p>
+  </div>
+
+  <ol class="news__list">
+    {newsItems.map((item) => (
+      <li class="news__item">
+        <time class="news__date" datetime={item.date}>
+          {new Date(item.date).toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          })}
+        </time>
+
+        <div class="news__body">
+          <strong class="news__title">{item.title}</strong>
+          {item.meta && <span class="news__meta">{item.meta}</span>}
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
 
 <section class="ep">
   <h2>Upcoming EP</h2>
@@ -102,18 +180,7 @@ All the music is set in a fictional universe with unique lore, settings, charact
     </div>
   </div>
 </section>
-        <section class="links">
-        <ul class="links__grid">
-  {links.map((l) => (
-    <li>
-      <a class="linkcard" href={l.href} target="_blank" rel="noreferrer">
-        <img class="linkcard__icon" src={l.icon} alt="" aria-hidden="true" />
-        <span>{l.label}</span>
-      </a>
-    </li>
-  ))}
-</ul>
-        </section>
+
 <section class="footer-panels">
   <details class="dropdown">
     <summary>Musicians & industry services</summary>
@@ -142,7 +209,7 @@ If you like my focus on non-literal storytelling & lyricism, please contact me o
     <summary>Business & funding</summary>
     <div class="dropdown__content">
       <p>
-My vision is to build a multimedia-driven immersive universe powered by music. This would include unique live show experiences, in-person artistic events and multimedia merch. I am an independent, self-funded artist so any support is appreciated. If you want to learn more about my vision and how you could finance it, please contact me on the email below. I will contact you as soon as I can.
+My vision is to build a multimedia-driven immersive universe powered by music. This would include unique live show experiences, in-person artistic events and multimedia merch. If you want to learn more about my vision and how you could finance it, please contact me on the email below. I will contact you as soon as I can.
 </p>
       <p>
         Contact: <a href="mailto:travellerprojectmusic@gmail.com">travellerprojectmusic@gmail.com</a>
@@ -167,12 +234,7 @@ I have played guitar and sang for 20 years. My first performance was on the mid-
 Whilst the music is at the centre, the true experience of the project will be a unity of all the creative arts. My dream is that, one day, I'll create an immersive exhibition where The Traveller Project universe can be experienced in reality, so that everyone can delve into my world as deeply as possible, through the format which resonates with them the most - audio, visual, written. 
       </p>
 	<p>
-	In short, I'm a dreamer. I'm lucky to have the disposition and experience to be tenacious and pragmatic too. As an independent artist funding myself, I've become a marketer with no marketing experience, a web developer with no website coding experience, a social media promoter who never wanted TikTok. I know that with enough time, I will become so much more, and I <strong>will</strong> see this through.
-</p>
-<p>I quit my job to do music for 4 months this year. It was the best decision I have ever made. I have 5 songs mastered that I'm really proud of, ready to release throughout the first half of 2026. We (my esteemed producer, Silgor, and myself) are really proud of what we've created, and we can't wait to share them with you. Now, I'll return to work having set these foundations. I'll build on them until The Traveller Project goes all the way.
-</p>
-<p>
-I'm at the start of my journey. I'd love if you would join me for my first steps. 
+	As you can tell, I'm a dreamer. Right now, I'm at the start of my journey. I'd love if you would join me along the way.
 </p>
     </div>
   </details>
@@ -187,5 +249,15 @@ I'm at the start of my journey. I'd love if you would join me for my first steps
       </main>
 </div>
     </div>
+
+<script>
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-bio-close]");
+    if (!btn) return;
+    const details = document.querySelector(".bio__details");
+    if (details) details.open = false;
+  });
+</script>
+
   </body>
 </html>

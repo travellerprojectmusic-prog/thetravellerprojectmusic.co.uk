@@ -1,0 +1,91 @@
+---
+const bandcampUrl = "https://thetravellerproject.bandcamp.com/track/wanderer-with-no-name-24-bit";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Merch · The Traveller Project</title>
+    <meta name="description" content="Merch for The Traveller Project." />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+  </head>
+
+  <body class="merchpage">
+    <header class="topnav" aria-label="Site navigation">
+      <nav class="topnav__actions">
+        <a class="topnav__item" href="/">Home</a>
+        <a class="topnav__item" href="/merch/">Merch</a>
+      </nav>
+    </header>
+
+    <div class="page">
+      <header class="hero">
+        <img class="hero__img" src="/images/hero1.jpg" alt="The Traveller Project hero image" />
+      </header>
+
+      <div class="container">
+        <main class="content merch">
+          <header class="merch__header">
+            <h1 class="merch__title">Merch</h1>
+            <p class="merch__subtitle">Digital, physical, and apparel.</p>
+          </header>
+
+          <div class="merch__section">
+            <h2 class="merch__heading">Digital downloads</h2>
+
+            <div class="merch__item">
+              <div class="merch__media">
+                <img class="merch__icon" src="/icons/bandcamp.svg" alt="" aria-hidden="true" />
+              </div>
+
+              <div class="merch__info">
+                <h3 class="merch__itemTitle">Digital downloads</h3>
+                <p class="merch__desc">Support the project directly and get high-quality downloads on Bandcamp.</p>
+                <a class="merch__link" href={bandcampUrl} target="_blank" rel="noreferrer">
+                  Open Bandcamp →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="merch__section">
+            <h2 class="merch__heading">Physical Media</h2>
+
+            <div class="merch__item">
+              <div class="merch__media merch__media--placeholder" aria-hidden="true">CD</div>
+              <div class="merch__info">
+                <h3 class="merch__itemTitle">CDs, Vinyl, Cassettes</h3>
+                <p class="merch__desc">Coming soon.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="merch__section">
+            <h2 class="merch__heading">Apparel</h2>
+
+            <div class="merch__item">
+              <div class="merch__media merch__media--placeholder" aria-hidden="true">TEE</div>
+              <div class="merch__info">
+                <h3 class="merch__itemTitle">Apparel</h3>
+                <p class="merch__desc">Coming soon.</p>
+              </div>
+            </div>
+          </div>
+            <div class="merch__item">
+              <div class="merch__media merch__media--placeholder" aria-hidden="true">Stickers</div>
+              <div class="merch__info">
+                <h3 class="merch__itemTitle">Stickers & Misc</h3>
+                <p class="merch__desc">Coming soon.</p>
+
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -6,11 +6,15 @@ const presave = {
 };
 
 const links = [
-  { label: "Spotify", href: "", icon: "/icons/spotify.svg" },
-  { label: "Instagram", href: "https://www.instagram.com/travellerprojectmusic/reels/", icon: "/icons/instagram.svg" },
+  { label: "Bandcamp", href: "", icon: "/icons/bandcamp.svg" },
+  { label: "Spotify", href: "https://open.spotify.com/artist/7abQsJjZoo5OOd3J2QNQil?si=S-XEpKvQRtqOlyWR06ODlQ", icon: "/icons/spotify.svg" },
+  { label: "Apple Music", href: "https://music.apple.com/gb/artist/the-traveller-project/1855606340", icon: "/icons/applemusic.svg" },
+  { label: "Tidal", href: "https://tidal.com/artist/70347746", icon: "/icons/tidal.svg" },
+  { label: "SoundCloud", href: "https://soundcloud.com/thetravellerproject-music", icon: "/icons/soundcloud.svg" },
+  { label: "Instagram", href: "https://www.instagram.com/travellerprojectmusic/", icon: "/icons/instagram.svg" },
   { label: "TikTok", href: "https://www.tiktok.com/@travellerproject", icon: "/icons/tiktok.svg" },
   { label: "Facebook", href: "https://www.facebook.com/travellerprojectmusic/", icon: "/icons/facebook.svg" },
-  { label: "SoundCloud", href: "https://soundcloud.com/travellerprojectmusic", icon: "/icons/soundcloud.svg" },
+  { label: "YouTube", href: "https://www.youtube.com/@TheTravellerProjectmusic", icon: "/icons/youtube.svg" },
 ];
 
 const ep = {
@@ -95,17 +99,24 @@ All the music is set in a fictional universe with unique lore, settings, charact
     </div>
   </div>
 </section>
-        <section class="links">
-        <ul class="links__grid">
-  {links.map((l) => (
-    <li>
-      <a class="linkcard" href={l.href} target="_blank" rel="noreferrer">
-        <img class="linkcard__icon" src={l.icon} alt="" aria-hidden="true" />
-        <span>{l.label}</span>
-      </a>
-    </li>
-  ))}
-</ul>
+<section class="links" aria-label="Links">
+  <ul class="links__grid">
+    {links.map((l) => (
+      <li>
+        <a
+          class="linkcard linkcard--icon"
+          href={l.href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={l.label}
+          title={l.label}
+        >
+          <img class="linkcard__icon" src={l.icon} alt="" aria-hidden="true" />
+          <span class="sr-only">{l.label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
         </section>
 <section class="footer-panels">
   <details class="dropdown">

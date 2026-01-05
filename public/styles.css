@@ -14,6 +14,76 @@ html, body {
   height: 100%;
 }
 
+/* --- TOP NAV: fixed, black blocks under items, vertical dividers --- */
+.topnav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 56px;
+  z-index: 80;
+
+  display: flex;
+  align-items: stretch;
+  background: transparent;
+}
+
+.topnav__actions {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: stretch;
+}
+
+.topnav__item {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+
+  padding: 0 16px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+
+  color: var(--text);
+
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+/* prevent double borders between adjacent items */
+.topnav__item + .topnav__item {
+  border-left: 0;
+}
+
+/* black block under each item */
+.topnav__item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: -1;
+}
+
+.topnav__item:hover::before {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+.topnav__item:focus-visible::before {
+  background: rgba(0, 0, 0, 1);
+}
+
+.topnav__item:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.65);
+  outline-offset: -2px;
+}
+/* this is all for the sticky merch button */
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -158,17 +228,17 @@ p { margin: 0; line-height: 1.6; color: var(--text); }
   color: var(--btn-text);
   background: var(--btn-bg);
   border: 1px solid var(--btn-border);
-
-  .button:focus-visible,
-  .linkcard:focus-visible,
-  .dropdown > summary:focus-visible {
-  outline: 2px solid rgba(255,255,255,0.65);
-  outline-offset: 3px;
-}
 }
 
 .button:hover, .linkcard:hover {
   background: var(--btn-bg-hover);
+}
+
+.button:focus-visible,
+.linkcard:focus-visible,
+.dropdown > summary:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.65);
+  outline-offset: 3px;
 }
 
 .presave__desc { color: var(--muted); }
@@ -177,19 +247,44 @@ p { margin: 0; line-height: 1.6; color: var(--text); }
   list-style: none;
   padding: 0;
   margin: 0;
+
   display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr; /* always one column */
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(54px, 1fr));
+  align-items: center;
 }
 
-.links__grid .linkcard {
-  width: 100%;
+.links__grid li {
+  display: grid;
+  place-items: center;
 }
 
 .linkcard__icon {
   width: 20px;
   height: 20px;
   display: block;
+}
+.linkcard--icon {
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  justify-content: center;
+}
+
+.linkcard--icon .linkcard__icon {
+  width: 26px;
+  height: 26px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .dropdown > summary {
@@ -275,3 +370,245 @@ p { margin: 0; line-height: 1.6; color: var(--text); }
 .ep__tracklist li {
   color: var(--text);
 }
+
+.news__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.news__hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Scroll container sized to roughly 3 items */
+.news__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: grid;
+
+  /* Fixed height: tune this if your items run taller/shorter */
+  max-height: 210px;         /* ~3 items */
+  overflow: auto;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* Divider lines between entries */
+.news__item {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 12px;
+
+  padding: 12px 12px;
+}
+
+.news__item + .news__item {
+  border-top: 1px solid var(--border);
+}
+
+.news__date {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.news__title {
+  display: block;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.news__meta {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* Optional: nicer keyboard focus if you later add links inside items */
+.news__list:focus-within {
+  outline: 2px solid rgba(255,255,255,0.35);
+  outline-offset: 3px;
+}
+
+/* Optional: better scrollbar feel (works in most modern browsers) */
+.news__list {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.25) rgba(255,255,255,0.06);
+}
+.news__list::-webkit-scrollbar {
+  width: 10px;
+}
+.news__list::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.22);
+  border-radius: 999px;
+  border: 2px solid rgba(0,0,0,0.0);
+}
+.news__list::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+}
+
+/* --- BIO DROPDOWN (homepage intro) --- */
+
+.bio--dropdown {
+  text-align: center;
+}
+
+/* summary behaviour */
+.bio__summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.bio__summary::-webkit-details-marker {
+  display: none;
+}
+
+.bio__summary h2 {
+  margin: 0 0 8px;
+}
+
+.bio__intro {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* small CTA text */
+.bio__cta {
+  margin-top: 10px;
+  font-size: 11px; /* smaller than before */
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.bio__summary:hover .bio__cta {
+  text-decoration: underline;
+}
+
+.bio__content {
+  margin-top: 16px;
+}
+
+.bio__content p + p {
+  margin-top: 12px;
+}
+
+/* show/hide the "Click here for more" line depending on open state */
+.bio__details[open] .bio__cta--open {
+  display: none;
+}
+
+/* minimise control at bottom (visual only; JS needed to actually close) */
+.bio__minimise {
+  margin-top: 16px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bio__minimise:hover {
+  text-decoration: underline;
+}
+
+/* --- MERCH PAGE: clean, traditional divisions --- */
+.merch__header {
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.merch__title {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: 0.02em;
+}
+
+.merch__subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.merch__section {
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+
+.merch__heading {
+  margin: 0 0 12px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* items */
+.merch__grid {
+  display: grid;
+  gap: 12px;
+}
+
+.merch__item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
+  align-items: center;
+
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.merch__media {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.18);
+}
+
+.merch__icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.merch__media--placeholder {
+  color: rgba(255,255,255,0.75);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: 12px;
+}
+
+.merch__itemTitle {
+  margin: 0;
+  font-size: 16px;
+}
+
+.merch__desc {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.merch__link {
+  display: inline-block;
+  margin-top: 8px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
