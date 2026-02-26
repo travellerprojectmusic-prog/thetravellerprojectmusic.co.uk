@@ -1,8 +1,8 @@
 ---
 const presave = {
-  href: "https://thetravellerproject.ffm.to/wandererwithnoname",
-  label: "Pre-save: Wanderer With No Name",
-  desc: "Pre-save to your library to be the first to hear my debut single on 2nd January, 2026.",
+  href: "",
+  label: "",
+  desc: ""
 };
 
 const links = [
@@ -14,44 +14,49 @@ const links = [
   { label: "Instagram", href: "https://www.instagram.com/travellerprojectmusic/", icon: "/icons/instagram.svg" },
   { label: "TikTok", href: "https://www.tiktok.com/@travellerproject", icon: "/icons/tiktok.svg" },
   { label: "Facebook", href: "https://www.facebook.com/travellerprojectmusic/", icon: "/icons/facebook.svg" },
-  { label: "YouTube", href: "https://www.youtube.com/@TheTravellerProjectmusic", icon: "/icons/youtube.svg" },
+  { label: "YouTube", href: "https://www.youtube.com/@TheTravellerProjectmusic", icon: "/icons/youtube.svg" }
 ];
 
 const ep = {
   title: "The Black Sun EP",
   art: "/images/blacksunepcover.png",
-  description: `The Black Sun EP is about taking charge of your life after drifting for a while. The story is abstract, with carefully chosen lyrics, themes and experiences to take you on that journey as a listener. Unlike most modern music, it's been carefully curated for continuous listening to make it as immersive as possible. The EP will be fully released in February 2026.`
-,
-  tracks: [
-    "Intro",
-    "Wanderer With No Name",
-    "Through The Black Sun",
-    "Blood Spirit",
-  ],
+  description: `The Black Sun EP is about taking charge of your life after drifting for a while. The story is abstract, with carefully chosen lyrics, themes and experiences to take you on that journey as a listener. The EP is out on all platforms as of 20th Feb 2026.`,
+  tracks: ["Intro", "Wanderer With No Name", "Through The Black Sun", "Blood Spirit"]
 };
 
 const newsItems = [
   {
+    date: "2026-02-26",
+    title: "Upcoming Release: Blood Brother, 27th March 2026",
+    meta: "A vengent alt-rock anthem takes the stage with tense rhythms and tube-screaming acoustic guitars."
+  },
+  {
+    date: "2026-02-20",
+    title: "The Black Sun EP Released",
+    meta: "Embark on the first journey into the Traveller Project universe through this melodic alt-rock EP."
+  },
+  {
     date: "2026-01-05",
     title: "Upcoming Release: Blood Spirit, 22nd Jan 2026",
-    meta: "A feel-good alt-rock song to take you through your day.",
+    meta: "A feel-good alt-rock song to take you through your day."
   },
   {
     date: "2026-01-04",
     title: "Wanderer With No Name Acoustic Version",
-    meta: "A cosy, fireside version of Wanderer With No Name is live on YouTube.",
+    meta: "A cosy, fireside version of Wanderer With No Name is live on YouTube."
   },
   {
     date: "2026-01-02",
     title: "“Wanderer With No Name” is out now",
-    meta: "Available on all streaming platforms.",
+    meta: "Available on all streaming platforms."
   },
   {
     date: "2025-11-30",
     title: "The Black Sun EP announced",
-    meta: "Full release planned for February 2026. See below for more info.",
-  },
+    meta: "Full release planned for February 2026. See below for more info."
+  }
 ];
+---
 ---
 
 <html lang="en">
@@ -159,7 +164,7 @@ const newsItems = [
 </section>
 
 <section class="ep">
-  <h2>Upcoming EP</h2>
+  <h2>Highlight</h2>
 
   <div class="ep__top">
     <img class="ep__art" src={ep.art} alt={`${ep.title} cover art`} />
