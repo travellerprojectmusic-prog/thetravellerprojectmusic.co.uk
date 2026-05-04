@@ -1,5 +1,14 @@
 ---
-const bandcampUrl = "https://thetravellerproject.bandcamp.com/track/wanderer-with-no-name-24-bit";
+const videos = [
+  {
+    id: "yTGnRfX3B9s",
+    title: "Wanderer With No Name (Acoustic)",
+  },
+  {
+    id: "UFXaSVdt9WU",
+    title: "Blood Spirit (Acoustic)",
+  },
+];
 ---
 
 <!doctype html>
@@ -8,8 +17,8 @@ const bandcampUrl = "https://thetravellerproject.bandcamp.com/track/wanderer-wit
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Merch | The Traveller Project</title>
-  <meta name="description" content="Support The Traveller Project. Buy music and more on Bandcamp." />
+  <title>Live | The Traveller Project</title>
+  <meta name="description" content="Live acoustic sessions and upcoming shows from The Traveller Project." />
 
   <link rel="icon" type="image/png" href="/favicon.png?v=4" />
   <link rel="apple-touch-icon" href="/favicon.png?v=4" />
@@ -38,49 +47,37 @@ const bandcampUrl = "https://thetravellerproject.bandcamp.com/track/wanderer-wit
     </div>
   </header>
 
-  <div class="page-body merch-page">
+  <div class="page-body live-page">
 
-    <header class="merch-header">
-      <h1 class="merch-header__title">Merch</h1>
-      <p class="merch-header__sub">Support the project and take the music home.</p>
+    <header class="live-header">
+      <h1 class="live-header__title">Live</h1>
+      <p class="live-header__sub">Acoustic sessions and live dates.</p>
     </header>
 
-    <section class="merch-band" aria-label="Bandcamp">
-      <div class="merch-band__inner">
-        <div class="merch-band__text">
-          <h2 class="section-label">Digital downloads</h2>
-          <p class="merch-band__desc">
-            Buy and download The Traveller Project's music directly on Bandcamp.
-            Name your price, keep it forever, and support the project directly.
-          </p>
-        </div>
-        <a class="btn btn--primary merch-band__cta" href={bandcampUrl} target="_blank" rel="noreferrer">
-          <img src="/icons/bandcamp.svg" alt="" aria-hidden="true" width="20" height="20" />
-          Buy on Bandcamp
-        </a>
+    <section class="live-videos" aria-labelledby="videos-heading">
+      <h2 class="section-label" id="videos-heading">Videos</h2>
+      <div class="live-video-grid">
+        {videos.map((v) => (
+          <div class="live-video">
+            <div class="live-video__embed">
+              <iframe
+                src={`https://www.youtube.com/embed/${v.id}`}
+                title={v.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <p class="live-video__title">{v.title}</p>
+          </div>
+        ))}
       </div>
     </section>
 
-    <section class="merch-products" aria-label="Apparel">
-      <h2 class="section-label">Apparel</h2>
-      <div class="merch-product">
-        <!-- TODO: swap src for hi-res shirt mockup once designer delivers files -->
-        <img
-          class="merch-product__img"
-          src="/images/blacksunepcover.png"
-          alt="Black Sun — Black Tee"
-        />
-        <div class="merch-product__body">
-          <h3 class="merch-product__name">Black Sun — Black Tee</h3>
-          <p class="merch-product__desc">
-            The official debut merch from The Traveller Project. A heavyweight black t-shirt
-            featuring the full artwork from The Black Sun EP across the back. The Traveller Project
-            sits on the front chest. Printed on high-quality material, true to size.
-          </p>
-          <p class="merch-product__price">£30</p>
-          <p class="merch-product__note">Coming soon.</p>
-        </div>
-      </div>
+    <section class="live-shows" aria-labelledby="shows-heading">
+      <h2 class="section-label" id="shows-heading">Shows</h2>
+      <p class="live-shows__empty">
+        No upcoming dates. <a href="/contact/">Get in touch</a> for bookings.
+      </p>
     </section>
 
   </div>
