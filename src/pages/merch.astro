@@ -2,90 +2,79 @@
 const bandcampUrl = "https://thetravellerproject.bandcamp.com/track/wanderer-with-no-name-24-bit";
 ---
 
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Merch · The Traveller Project</title>
-    <meta name="description" content="Merch for The Traveller Project." />
-    <link rel="stylesheet" href="/styles.css" />
-    <link rel="icon" href="/favicon.png" type="image/png" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <body class="merchpage">
-    <header class="topnav" aria-label="Site navigation">
-      <nav class="topnav__actions">
+  <title>Merch | The Traveller Project</title>
+  <meta name="description" content="Support The Traveller Project. Buy music and more on Bandcamp." />
+
+  <link rel="icon" type="image/png" href="/favicon.png?v=4" />
+  <link rel="apple-touch-icon" href="/favicon.png?v=4" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+
+  <header class="topnav" aria-label="Site navigation">
+    <div class="topnav__inner">
+      <a class="topnav__logo" href="/">
+        <img src="/images/TravProjText.png" alt="The Traveller Project" class="topnav__wordmark" />
+      </a>
+      <nav class="topnav__links">
         <a class="topnav__item" href="/">Home</a>
         <a class="topnav__item" href="/merch/">Merch</a>
+        <a class="topnav__item" href="/contact/">Contact</a>
       </nav>
+    </div>
+  </header>
+
+  <div class="page-body merch-page">
+
+    <header class="merch-header">
+      <h1 class="merch-header__title">Merch</h1>
+      <p class="merch-header__sub">Support the project and take the music home.</p>
     </header>
 
-    <div class="page">
-      <header class="hero">
-        <img class="hero__img" src="/images/hero1.jpg" alt="The Traveller Project hero image" />
-      </header>
-
-      <div class="container">
-        <main class="content merch">
-          <header class="merch__header">
-            <h1 class="merch__title">Merch</h1>
-            <p class="merch__subtitle">Digital, physical, and apparel.</p>
-          </header>
-
-          <div class="merch__section">
-            <h2 class="merch__heading">Digital downloads</h2>
-
-            <div class="merch__item">
-              <div class="merch__media">
-                <img class="merch__icon" src="/icons/bandcamp.svg" alt="" aria-hidden="true" />
-              </div>
-
-              <div class="merch__info">
-                <h3 class="merch__itemTitle">Digital downloads</h3>
-                <p class="merch__desc">Support the project directly and get high-quality downloads on Bandcamp.</p>
-                <a class="merch__link" href={bandcampUrl} target="_blank" rel="noreferrer">
-                  Open Bandcamp →
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="merch__section">
-            <h2 class="merch__heading">Physical Media</h2>
-
-            <div class="merch__item">
-              <div class="merch__media merch__media--placeholder" aria-hidden="true">CD</div>
-              <div class="merch__info">
-                <h3 class="merch__itemTitle">CDs, Vinyl, Cassettes</h3>
-                <p class="merch__desc">Coming soon.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="merch__section">
-            <h2 class="merch__heading">Apparel</h2>
-
-            <div class="merch__item">
-              <div class="merch__media merch__media--placeholder" aria-hidden="true">TEE</div>
-              <div class="merch__info">
-                <h3 class="merch__itemTitle">Apparel</h3>
-                <p class="merch__desc">Coming soon.</p>
-              </div>
-            </div>
-          </div>
-            <div class="merch__item">
-              <div class="merch__media merch__media--placeholder" aria-hidden="true">Stickers</div>
-              <div class="merch__info">
-                <h3 class="merch__itemTitle">Stickers & Misc</h3>
-                <p class="merch__desc">Coming soon.</p>
-
-              </div>
-            </div>
-          </div>
-        </main>
+    <section class="merch-band" aria-label="Bandcamp">
+      <div class="merch-band__inner">
+        <div class="merch-band__text">
+          <h2 class="section-label">Digital downloads</h2>
+          <p class="merch-band__desc">
+            Buy and download The Traveller Project's music directly on Bandcamp.
+            Name your price, keep it forever, and support the project directly.
+          </p>
+        </div>
+        <a class="btn btn--primary merch-band__cta" href={bandcampUrl} target="_blank" rel="noreferrer">
+          <img src="/icons/bandcamp.svg" alt="" aria-hidden="true" width="20" height="20" />
+          Buy on Bandcamp
+        </a>
       </div>
-    </div>
-  </body>
+    </section>
+
+    <section class="merch-soon" aria-label="Coming soon">
+      <h2 class="section-label">Coming soon</h2>
+      <p class="merch-soon__text">Physical media, apparel and more are in the works. Check back soon.</p>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <nav class="footer__nav" aria-label="Footer navigation">
+      <a href="/merch/">Merch</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <small class="footer__legal">
+      © {new Date().getFullYear()} The Traveller Project · Joshua Chalfen
+    </small>
+  </footer>
+
+</body>
 </html>

@@ -1,267 +1,176 @@
 ---
-const presave = {
-  href: "",
-  label: "",
-  desc: ""
+const release = {
+  title: "Blood Brother",
+  art: "/images/bloodbrother.gif",
+  desc: "A vengeful alt-rock anthem with tense rhythms and tube-screaming acoustic guitars.",
+  spotifyUrl: "https://open.spotify.com/artist/7abQsJjZoo5OOd3J2QNQil?si=S-XEpKvQRtqOlyWR06ODlQ",
 };
 
-const links = [
-  { label: "Bandcamp", href: "https://thetravellerproject.bandcamp.com/track/wanderer-with-no-name-24-bit", icon: "/icons/bandcamp.svg" },
-  { label: "Spotify", href: "https://open.spotify.com/artist/7abQsJjZoo5OOd3J2QNQil?si=S-XEpKvQRtqOlyWR06ODlQ", icon: "/icons/spotify.svg" },
-  { label: "Apple Music", href: "https://music.apple.com/gb/artist/the-traveller-project/1855606340", icon: "/icons/applemusic.svg" },
-  { label: "Tidal", href: "https://tidal.com/artist/70347746", icon: "/icons/tidal.svg" },
-  { label: "SoundCloud", href: "https://soundcloud.com/thetravellerproject-music", icon: "/icons/soundcloud.svg" },
-  { label: "Instagram", href: "https://www.instagram.com/travellerprojectmusic/", icon: "/icons/instagram.svg" },
-  { label: "TikTok", href: "https://www.tiktok.com/@travellerproject", icon: "/icons/tiktok.svg" },
-  { label: "Facebook", href: "https://www.facebook.com/travellerprojectmusic/", icon: "/icons/facebook.svg" },
-  { label: "YouTube", href: "https://www.youtube.com/@TheTravellerProjectmusic", icon: "/icons/youtube.svg" }
+const platforms = [
+  { label: "Spotify",     href: "https://open.spotify.com/artist/7abQsJjZoo5OOd3J2QNQil?si=S-XEpKvQRtqOlyWR06ODlQ", icon: "/icons/spotify.svg" },
+  { label: "Apple Music", href: "https://music.apple.com/gb/artist/the-traveller-project/1855606340",                icon: "/icons/applemusic.svg" },
+  { label: "Bandcamp",    href: "https://thetravellerproject.bandcamp.com/track/wanderer-with-no-name-24-bit",       icon: "/icons/bandcamp.svg" },
+  { label: "Tidal",       href: "https://tidal.com/artist/70347746",                                                 icon: "/icons/tidal.svg" },
+  { label: "SoundCloud",  href: "https://soundcloud.com/thetravellerproject-music",                                  icon: "/icons/soundcloud.svg" },
+  { label: "YouTube",     href: "https://www.youtube.com/@TheTravellerProjectmusic",                                 icon: "/icons/youtube.svg" },
+  { label: "Instagram",   href: "https://www.instagram.com/travellerprojectmusic/",                                  icon: "/icons/instagram.svg" },
+  { label: "TikTok",      href: "https://www.tiktok.com/@travellerproject",                                          icon: "/icons/tiktok.svg" },
+  { label: "Facebook",    href: "https://www.facebook.com/travellerprojectmusic/",                                   icon: "/icons/facebook.svg" },
 ];
-
-const ep = {
-  title: "The Black Sun EP",
-  art: "/images/blacksunepcover.png",
-  description: `The Black Sun EP is about taking charge of your life after drifting for a while. The story is abstract, with carefully chosen lyrics, themes and experiences to take you on that journey as a listener. The EP is out on all platforms as of 20th Feb 2026.`,
-  tracks: ["Intro", "Wanderer With No Name", "Through The Black Sun", "Blood Spirit"]
-};
 
 const newsItems = [
-  {
-    date: "2026-02-26",
-    title: "Upcoming Release: Blood Brother, 27th March 2026",
-    meta: "A vengent alt-rock anthem takes the stage with tense rhythms and tube-screaming acoustic guitars."
-  },
-  {
-    date: "2026-02-20",
-    title: "The Black Sun EP Released",
-    meta: "Embark on the first journey into the Traveller Project universe through this melodic alt-rock EP."
-  },
-  {
-    date: "2026-01-05",
-    title: "Upcoming Release: Blood Spirit, 22nd Jan 2026",
-    meta: "A feel-good alt-rock song to take you through your day."
-  },
-  {
-    date: "2026-01-04",
-    title: "Wanderer With No Name Acoustic Version",
-    meta: "A cosy, fireside version of Wanderer With No Name is live on YouTube."
-  },
-  {
-    date: "2026-01-02",
-    title: "“Wanderer With No Name” is out now",
-    meta: "Available on all streaming platforms."
-  },
-  {
-    date: "2025-11-30",
-    title: "The Black Sun EP announced",
-    meta: "Full release planned for February 2026. See below for more info."
-  }
+  { date: "2026-03-27", title: "Blood Brother: out now",                    meta: "A vengeful alt-rock anthem, out on all platforms." },
+  { date: "2026-02-20", title: "The Black Sun EP released",                  meta: "Embark on the first journey into the Traveller Project universe." },
+  { date: "2026-01-04", title: "Wanderer With No Name (Acoustic)",           meta: "A cosy, fireside version is live on YouTube." },
+  { date: "2026-01-02", title: "Wanderer With No Name: out now",             meta: "Available on all streaming platforms." },
 ];
----
+
+function fmtDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+}
 ---
 
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>The Traveller Project</title>
-<link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}favicon.png?v=4`} />
-<link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}favicon.png?v=4`} />
-    <meta name="description" content="Official site for The Traveller Project." />
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <body>
+  <title>The Traveller Project | Blood Brother: Out Now</title>
+  <meta name="description" content="The Traveller Project is a British alt-rock artist blending warm guitar tones with experimental electronica. Blood Brother is out now on all platforms." />
+  <link rel="canonical" href="https://www.thetravellerprojectmusic.co.uk/" />
 
-<header class="topnav" aria-label="Site navigation">
-  <nav class="topnav__actions">
-    <a class="topnav__item" href="/">Home</a>
-    <a class="topnav__item" href="/merch/">Merch</a>
-    <!-- future: <a class="topnav__item" href="/shows/">Shows</a> etc -->
-  </nav>
-</header>
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://www.thetravellerprojectmusic.co.uk/" />
+  <meta property="og:title"       content="The Traveller Project | Blood Brother: Out Now" />
+  <meta property="og:description" content="A British alt-rock artist blending warm guitar tones with experimental electronica. Blood Brother is out now." />
+  <meta property="og:image"       content="https://www.thetravellerprojectmusic.co.uk/images/bloodbrother.gif" />
 
-    <div class="page">
-      <header class="hero">
-        <img class="hero__img" src="/images/hero1.jpg" alt="The Traveller Project hero image" />
-      </header>
-<div class="container">
-      <main class="content">
-        <section class="titlemark" aria-label="Artist name">
-          <img class="titlemark__img" src="/images/TravProjText.png" alt="The Traveller Project" />
-        </section>
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="The Traveller Project | Blood Brother: Out Now" />
+  <meta name="twitter:description" content="A British alt-rock artist blending warm guitar tones with experimental electronica. Blood Brother is out now." />
+  <meta name="twitter:image"       content="https://www.thetravellerprojectmusic.co.uk/images/bloodbrother.gif" />
 
-<section class="links" aria-label="Links">
-  <ul class="links__grid">
-    {links.map((l) => (
-      <li>
-        <a
-          class="linkcard linkcard--icon"
-          href={l.href}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={l.label}
-          title={l.label}
-        >
-          <img class="linkcard__icon" src={l.icon} alt="" aria-hidden="true" />
-          <span class="sr-only">{l.label}</span>
-        </a>
-      </li>
-    ))}
-  </ul>
-        </section>
-<section class="bio bio--dropdown">
-  <details class="bio__details">
-    <summary class="bio__summary">
-      <h2><strong>The official website for The Traveller Project</strong></h2>
+  <link rel="icon"             type="image/png" href={`${import.meta.env.BASE_URL}favicon.png?v=4`} />
+  <link rel="apple-touch-icon"                  href={`${import.meta.env.BASE_URL}favicon.png?v=4`} />
 
-      <p class="bio__intro">
-        This is your home for updates on new music, merch, events, artwork and major milestones.
-      </p>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
-      <p class="bio__cta bio__cta--open">Click here for more</p>
-    </summary>
+  <link rel="stylesheet" href="/styles.css" />
 
-    <div class="bio__content">
-      <p>
-        The project focuses on emotional, abstract storytelling through music. Warm guitar tones and experimental electronica will take you on a journey through other worlds. The project explores a unique blend of genres to create a range of experiences, from intimate ambient soundscapes to anthemic rock. Inspirations include Gorillaz, Nick Drake, Tash Sultana, John Fruiscante and Massive Attack. Live shows range from acoustic sets to complex live looping setups.
-      </p>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "The Traveller Project",
+    "url": "https://www.thetravellerprojectmusic.co.uk",
+    "genre": ["Alt-rock", "Ambient", "Electronic"],
+    "sameAs": [
+      "https://open.spotify.com/artist/7abQsJjZoo5OOd3J2QNQil",
+      "https://music.apple.com/gb/artist/the-traveller-project/1855606340",
+      "https://thetravellerproject.bandcamp.com",
+      "https://www.instagram.com/travellerprojectmusic/",
+      "https://www.youtube.com/@TheTravellerProjectmusic",
+      "https://www.facebook.com/travellerprojectmusic/"
+    ]
+  }
+  </script>
+</head>
 
-      <p>
-        All the music is set in a fictional universe with unique lore, settings, characters and stories. Artwork is in development.
-      </p>
+<body>
 
-<p class="bio__minimise" data-bio-close>Click to minimise</p>
-
+  <header class="topnav" aria-label="Site navigation">
+    <div class="topnav__inner">
+      <a class="topnav__logo" href="/">
+        <img src="/images/TravProjText.png" alt="The Traveller Project" class="topnav__wordmark" />
+      </a>
+      <nav class="topnav__links">
+        <a class="topnav__item" href="/">Home</a>
+        <a class="topnav__item" href="/merch/">Merch</a>
+        <a class="topnav__item" href="/contact/">Contact</a>
+      </nav>
     </div>
-  </details>
-</section>
+  </header>
 
-<section class="news" aria-label="News">
-  <div class="news__header">
-    <h2>News</h2>
-    <p class="news__hint">Scroll for older updates</p>
-  </div>
-
-  <ol class="news__list">
-    {newsItems.map((item) => (
-      <li class="news__item">
-        <time class="news__date" datetime={item.date}>
-          {new Date(item.date).toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-          })}
-        </time>
-
-        <div class="news__body">
-          <strong class="news__title">{item.title}</strong>
-          {item.meta && <span class="news__meta">{item.meta}</span>}
+  <section class="hero" aria-label="Latest release">
+    <div class="hero__inner">
+      <div class="hero__text">
+        <span class="hero__label">Out now</span>
+        <img class="hero__wordmark" src="/images/TravProjText.png" alt="The Traveller Project" />
+        <h1 class="hero__title">{release.title}</h1>
+        <p class="hero__desc">{release.desc}</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary" href={release.spotifyUrl} target="_blank" rel="noreferrer">
+            <img src="/icons/spotify.svg" alt="" aria-hidden="true" width="20" height="20" />
+            Listen on Spotify
+          </a>
+          <a class="btn btn--ghost" href="#listen">All platforms ↓</a>
         </div>
-      </li>
-    ))}
-  </ol>
-</section>
+      </div>
 
-<section class="ep">
-  <h2>Highlight</h2>
-
-  <div class="ep__top">
-    <img class="ep__art" src={ep.art} alt={`${ep.title} cover art`} />
-
-    <div class="ep__info">
-      <h3 class="ep__title">{ep.title}</h3>
-
-      {ep.description.split("\n").map(
-        (line) => line.trim() && <p>{line}</p>
-      )}
-
-      <div class="ep__tracks">
-        <h3 class="ep__tracksTitle">Tracklist</h3>
-        <ol class="ep__tracklist">
-          {ep.tracks.map((t) => <li>{t}</li>)}
-        </ol>
+      <div class="hero__art-wrap">
+        <img class="hero__art" src={release.art} alt="Blood Brother — The Traveller Project cover art" />
       </div>
     </div>
+  </section>
+
+  <div class="page-body">
+
+    <section class="identity" aria-labelledby="identity-heading">
+      <h2 class="section-label" id="identity-heading">What is The Traveller Project?</h2>
+      <p class="identity__bio">
+        Raw vocals, acoustic rock riffs and lofi drums power the emotional stories of The Traveller Project, the solo project of Josh Chalfen, a live-looping singer-songwriter from Suffolk, based in Highgate, North London.
+      </p>
+      <p class="identity__bio">
+        The project explores our place in the universe, the intense emotions that drive us and our search for direction. The music centres on what Josh calls "the veil" - the boundary between our immediate reality and everything beyond it. The sound draws from Gorillaz, Tunng, Mark Knopfler and Everlast into one unmistakable sound.
+      </p>
+      <p class="identity__bio">
+        The Black Sun EP, a story about confronting fear and finding your way through life, is out now on all platforms.
+      </p>
+    </section>
+
+    <section class="platforms" id="listen" aria-labelledby="listen-heading">
+      <h2 class="section-label" id="listen-heading">Listen</h2>
+      <ul class="platform__grid" role="list">
+        {platforms.map((p) => (
+          <li>
+            <a class="platform__link" href={p.href} target="_blank" rel="noreferrer">
+              <img class="platform__icon" src={p.icon} alt="" aria-hidden="true" width="22" height="22" />
+              <span>{p.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="news" aria-labelledby="news-heading">
+      <h2 class="section-label" id="news-heading">Latest</h2>
+      <ol class="news__list" role="list">
+        {newsItems.map((item) => (
+          <li class="news__item">
+            <time class="news__date" datetime={item.date}>{fmtDate(item.date)}</time>
+            <div class="news__body">
+              <strong class="news__title">{item.title}</strong>
+              {item.meta && <span class="news__meta">{item.meta}</span>}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
   </div>
-</section>
 
-<section class="footer-panels">
-  <details class="dropdown">
-    <summary>Musicians & industry services</summary>
-    <div class="dropdown__content">
-      <p>
-        I’m available for <strong>performance</strong> and <strong>songwriting</strong>.
-</p>
-<p>
-For <strong>performance</strong> bookings, I can perform originals for up to hour-long sets, with covers for longer sets. Right now, performances would be acoustic sets or demo versions of my songs only. I am working on a studio-fidelity live set at the moment. Please contact me at the email below for bookings. Please note, I am unlikely to take singalong or feel-good-cover gigs as The Traveller Project.
-	</p>
-	<p>
-I am open for <strong>songwriting</strong>. I have written songs for over 10 years and keep those skills sharp. I often write a new song every two weeks. Often, these songs don't fit into my artist persona, due to genre & tonal differences. 
-</p>
-<p>
-I have written songs for others in fictional settings, and would like to do the same for musicians making their way in reality too.
-</p>
-<p>
-If you like my focus on non-literal storytelling & lyricism, please contact me on the email below.
-      <p>
-        Contact: <a href="mailto:travellerprojectmusic@gmail.com">travellerprojectmusic@gmail.com</a>
-      </p>
-    </div>
-  </details>
+  <footer class="footer">
+    <nav class="footer__nav" aria-label="Footer navigation">
+      <a href="/merch/">Merch</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <small class="footer__legal">
+      © {new Date().getFullYear()} The Traveller Project · Joshua Chalfen
+    </small>
+  </footer>
 
-<details class="dropdown">
-    <summary>Business & funding</summary>
-    <div class="dropdown__content">
-      <p>
-My vision is to build a multimedia-driven immersive universe powered by music. This would include unique live show experiences, in-person artistic events and multimedia merch. If you want to learn more about my vision and how you could finance it, please contact me on the email below. I will contact you as soon as I can.
-</p>
-      <p>
-        Contact: <a href="mailto:travellerprojectmusic@gmail.com">travellerprojectmusic@gmail.com</a>
-      </p>
-    </div>
-  </details>
-
-  <details class="dropdown">
-    <summary>About me</summary>
-    <div class="dropdown__content">
-      <p>
-        <!-- Replace this with your About copy -->
-       Hi, I'm Josh. Thank you for your curiosity.
-</p>
-<p>
-I have played guitar and sang for 20 years. My first performance was on the mid-Suffolk grassroots folk circuit when I was 8 years old, where I sang an old gospel song. Since then I've loved and learnt different kinds of music, all of which is responsible for my music today.
-      </p>
-      <p>
-       My vision is to build something beyond music with The Traveller Project. I can see a universe clearly in my minds eye, with distinct characters, stories and lore. Art, animation and creative writing will surround the music I create as The Traveller Project, deepening immersion and bringing my abstract world to life. 
-	</p>
-	<p>
-Whilst the music is at the centre, the true experience of the project will be a unity of all the creative arts. My dream is that, one day, I'll create an immersive exhibition where The Traveller Project universe can be experienced in reality, so that everyone can delve into my world as deeply as possible, through the format which resonates with them the most - audio, visual, written. 
-      </p>
-	<p>
-	As you can tell, I'm a dreamer. Right now, I'm at the start of my journey. I'd love if you would join me along the way.
-</p>
-    </div>
-  </details>
-
-</section>
-
-<footer class="footer legal">
-  <small>
-    © {new Date().getFullYear()} The Traveller Project · Legal name: Joshua Chalfen · Artist: The Traveller Project
-  </small>
-</footer>
-      </main>
-</div>
-    </div>
-
-<script>
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-bio-close]");
-    if (!btn) return;
-    const details = document.querySelector(".bio__details");
-    if (details) details.open = false;
-  });
-</script>
-
-  </body>
+</body>
 </html>
