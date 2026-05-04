@@ -94,7 +94,7 @@ function fmtDate(iso: string) {
     </div>
   </header>
 
-  <section class="hero" aria-label="Latest release">
+  <section class="hero" aria-label="Latest release" id="top">
     <div class="hero__inner">
       <div class="hero__text">
         <span class="hero__label">Out now</span>
@@ -114,11 +114,17 @@ function fmtDate(iso: string) {
         <img class="hero__art" src={release.art} alt="Blood Brother — The Traveller Project cover art" />
       </div>
     </div>
+
+    <a class="hero__scroll" href="#about" aria-label="Scroll to more content">
+      <svg width="30" height="18" viewBox="0 0 22 13" fill="none" aria-hidden="true">
+        <path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
   </section>
 
   <div class="page-body">
 
-    <section class="identity" aria-labelledby="identity-heading">
+    <section class="identity" id="about" aria-labelledby="identity-heading">
       <h2 class="section-label" id="identity-heading">What is The Traveller Project?</h2>
       <p class="identity__bio">
         Raw vocals, acoustic rock riffs and lofi drums power the emotional stories of The Traveller Project, the solo project of Josh Chalfen, a live-looping singer-songwriter from Suffolk, based in Highgate, North London.
