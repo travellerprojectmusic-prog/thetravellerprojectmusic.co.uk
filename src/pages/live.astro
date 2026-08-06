@@ -9,6 +9,17 @@ const videos = [
     title: "Blood Spirit (Acoustic)",
   },
 ];
+
+const shows = [
+  {
+    day: "6",
+    month: "SEP",
+    dateLabel: "Sunday 6 September 2026",
+    event: "Faversham Hop Festival",
+    venue: "The Alex Bar",
+    time: "3:00pm",
+  },
+];
 ---
 
 <!doctype html>
@@ -87,9 +98,27 @@ const videos = [
 
     <section class="live-shows" aria-labelledby="shows-heading">
       <h2 class="section-label" id="shows-heading">Shows</h2>
-      <p class="live-shows__empty">
-        No upcoming dates. <a href="/contact/">Get in touch</a> for bookings.
-      </p>
+      {shows.length > 0 ? (
+        <ul class="show-list">
+          {shows.map((s) => (
+            <li class="show-card">
+              <div class="show-card__date">
+                <span class="show-card__day">{s.day}</span>
+                <span class="show-card__month">{s.month}</span>
+              </div>
+              <div class="show-card__details">
+                <p class="show-card__event">{s.event}</p>
+                <p class="show-card__meta">{s.venue} · {s.time}</p>
+                <p class="show-card__datelabel">{s.dateLabel}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="live-shows__empty">
+          No upcoming dates. <a href="/contact/">Get in touch</a> for bookings.
+        </p>
+      )}
     </section>
 
   </div>
