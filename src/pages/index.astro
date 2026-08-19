@@ -110,6 +110,38 @@ function fmtDate(iso: string) {
     </div>
   </header>
 
+  <div class="band-banner" id="bandBanner">
+    <a class="band-banner__link" href="/live/#band-heading">
+      <span class="band-banner__text"><strong>Looking for a band.</strong> Drummer, bassist &amp; guitarist wanted, see Live for details.</span>
+      <span class="band-banner__arrow" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 22 13" fill="none">
+          <path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+    <button class="band-banner__close" id="bandBannerClose" aria-label="Dismiss banner" type="button">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    const bandBanner = document.getElementById("bandBanner");
+    if (bandBanner) {
+      const setBannerHeight = () => {
+        document.documentElement.style.setProperty("--banner-h", bandBanner.offsetHeight + "px");
+      };
+      setBannerHeight();
+      window.addEventListener("resize", setBannerHeight);
+
+      document.getElementById("bandBannerClose")?.addEventListener("click", (e) => {
+        e.preventDefault();
+        bandBanner.classList.add("is-dismissed");
+      });
+    }
+  </script>
+
   <section class="hero" aria-label="Latest release" id="top">
     <div class="hero__inner">
       <div class="hero__text">
