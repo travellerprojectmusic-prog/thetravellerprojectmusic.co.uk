@@ -77,25 +77,6 @@ const shows = [
       <p class="live-header__sub">Acoustic sessions and live dates.</p>
     </header>
 
-    <section class="live-videos" aria-labelledby="videos-heading">
-      <h2 class="section-label" id="videos-heading">Videos</h2>
-      <div class="live-video-grid">
-        {videos.map((v) => (
-          <div class="live-video">
-            <div class="live-video__embed">
-              <iframe
-                src={`https://www.youtube.com/embed/${v.id}`}
-                title={v.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <p class="live-video__title">{v.title}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
     <section class="live-shows" aria-labelledby="shows-heading">
       <h2 class="section-label" id="shows-heading">Shows</h2>
       {shows.length > 0 ? (
@@ -119,6 +100,33 @@ const shows = [
           No upcoming dates. <a href="/contact/">Get in touch</a> for bookings.
         </p>
       )}
+    </section>
+
+    <section class="live-band" aria-labelledby="band-heading">
+      <h2 class="section-label" id="band-heading">Looking for a band</h2>
+      <p class="live-band__text">
+        The Traveller Project began solo, but is now looking for a drummer, bassist &amp; guitarist to take it to the next level. I have written about 20 songs for the project that take it in a new acoustic rock direction. They need a band to bring them to life. Think Alice In Chains &amp; Staind acoustic, early Coldplay, the gentler side of RHCP. <a href="/contact/">Get in contact</a> if you're interested!
+      </p>
+      <p class="live-band__byline">- Josh</p>
+    </section>
+
+    <section class="live-videos" aria-labelledby="videos-heading">
+      <h2 class="section-label" id="videos-heading">Videos</h2>
+      <div class="live-video-grid">
+        {videos.map((v) => (
+          <div class="live-video">
+            <div class="live-video__embed">
+              <iframe
+                src={`https://www.youtube.com/embed/${v.id}`}
+                title={v.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <p class="live-video__title">{v.title}</p>
+          </div>
+        ))}
+      </div>
     </section>
 
   </div>

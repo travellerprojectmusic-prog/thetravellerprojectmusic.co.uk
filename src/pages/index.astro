@@ -19,6 +19,7 @@ const platforms = [
 ];
 
 const newsItems = [
+  { date: "2026-08-01", title: "First Radio Play",                          meta: "Featured on BBC Introducing: Suffolk & Norfolk, Saturday 9pm, as a break in between their Latitude recap." },
   { date: "2026-05-04", title: "New single incoming",                        meta: "Humanity arrives this summer." },
   { date: "2026-03-27", title: "Blood Brother: out now",                    meta: "A vengeful alt-rock anthem, out on all platforms." },
   { date: "2026-02-20", title: "The Black Sun EP released",                  meta: "Embark on the first journey into the Traveller Project universe." },
@@ -142,10 +143,10 @@ function fmtDate(iso: string) {
     <section class="identity" id="about" aria-labelledby="identity-heading">
       <h2 class="section-label" id="identity-heading">What is The Traveller Project?</h2>
       <p class="identity__bio">
-        Raw vocals, acoustic rock riffs and lofi drums power the emotional stories of The Traveller Project, the solo project of Josh Chalfen, a live-looping singer-songwriter from Suffolk, based in Highgate, North London.
+        Raw vocals, acoustic rock riffs and lofi drums power the emotional stories of The Traveller Project. This is the solo project of Josh Chalfen, a live-looping singer-songwriter from Suffolk, now based in North London.
       </p>
       <p class="identity__bio">
-        The project explores our place in the universe, the intense emotions that drive us and our search for direction. The music centres on what Josh calls "the veil" - the boundary between our immediate reality and everything beyond it. The sound draws from Gorillaz, Tunng, Mark Knopfler and Everlast into one unmistakable sound.
+        The project explores our place in the universe, the emotions that drive us and our search for direction. The music centres on what Josh calls "the veil" - the boundary between our immediate reality and everything beyond it.
       </p>
       <p class="identity__bio">
         The Black Sun EP, a story about confronting fear and finding your way through life, is out now on all platforms.
@@ -190,17 +191,19 @@ function fmtDate(iso: string) {
 
     <section class="news" aria-labelledby="news-heading">
       <h2 class="section-label" id="news-heading">Latest</h2>
-      <ol class="news__list" role="list">
-        {newsItems.map((item) => (
-          <li class="news__item">
-            <time class="news__date" datetime={item.date}>{fmtDate(item.date)}</time>
-            <div class="news__body">
-              <strong class="news__title">{item.title}</strong>
-              {item.meta && <span class="news__meta">{item.meta}</span>}
-            </div>
-          </li>
-        ))}
-      </ol>
+      <div class="news__scroll">
+        <ol class="news__list" role="list">
+          {newsItems.map((item) => (
+            <li class="news__item">
+              <time class="news__date" datetime={item.date}>{fmtDate(item.date)}</time>
+              <div class="news__body">
+                <strong class="news__title">{item.title}</strong>
+                {item.meta && <span class="news__meta">{item.meta}</span>}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
     </section>
 
   </div>
