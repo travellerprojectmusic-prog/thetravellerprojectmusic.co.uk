@@ -1,4 +1,6 @@
 ---
+import Analytics from "../components/Analytics.astro";
+
 const bandcampUrl = "https://thetravellerproject.bandcamp.com/track/wanderer-with-no-name-24-bit";
 ---
 
@@ -31,6 +33,10 @@ const bandcampUrl = "https://thetravellerproject.bandcamp.com/track/wanderer-wit
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/styles.css" />
+
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
+  <Analytics />
 </head>
 
 <body>
@@ -76,23 +82,47 @@ const bandcampUrl = "https://thetravellerproject.bandcamp.com/track/wanderer-wit
     <section class="merch-products" aria-label="Apparel">
       <h2 class="section-label">Apparel</h2>
       <div class="merch-product">
-        <!-- TODO: swap src for hi-res shirt mockup once designer delivers files -->
-        <img
-          class="merch-product__img"
-          src="/images/blacksunepcover.png"
-          alt="Black Sun — Black Tee"
-        />
+        <div class="merch-product__gallery">
+          <img
+            class="merch-product__img"
+            src="/images/front-unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-front-6a9c9002617e2.png"
+            alt="The Black Sun Black T Shirt, front"
+          />
+          <img
+            class="merch-product__img"
+            src="/images/back-unisex-organic-oversized-high-neck-blaster-2.0-t-shirt-black-back-6a9c9002622f6.png"
+            alt="The Black Sun Black T Shirt, back"
+          />
+        </div>
         <div class="merch-product__body">
-          <h3 class="merch-product__name">Black Sun — Black Tee</h3>
+          <h3 class="merch-product__name">The Black Sun Black T Shirt</h3>
           <p class="merch-product__desc">
             The official debut merch from The Traveller Project. A unisex oversized black t-shirt
             featuring the full artwork from The Black Sun EP across the back. The Traveller Project
             sits on the front chest. Printed on organic high-quality material.
           </p>
-          <p class="merch-product__price">£35</p>
-          <p class="merch-product__note">Coming soon.</p>
+          <p class="merch-product__price">£30</p>
+          <div class="merch-product__cta">
+            <div class="merch-product__buybox">
+              <stripe-buy-button
+                buy-button-id="buy_btn_1UCRSy1XY09uUQbAWpNQrEhx"
+                publishable-key="pk_live_51TTRKn1XY09uUQbAWvvIto8vLrW4R7tJPHFAg7gFvY2ezFcaYVoRE2u8CdebnY4lNQUdt0ovTRsX4D1trwIgdSMw00TksKUa1w"
+              >
+              </stripe-buy-button>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <section class="merch-legal" aria-label="Ordering information">
+      <p>
+        Apparel is printed to order by our print partner. Delivery estimates are shown at checkout.
+        You can cancel your order for a full refund within 14 days of receiving it: email
+        <a href="mailto:travellerprojectmusic@gmail.com">travellerprojectmusic@gmail.com</a> to arrange a return
+        or ask about an existing order. Products are sold by Joshua Chalfen, trading as
+        The Traveller Project.
+      </p>
     </section>
 
   </div>
