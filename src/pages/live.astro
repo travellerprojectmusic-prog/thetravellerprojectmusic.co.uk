@@ -14,12 +14,22 @@ const videos = [
 
 const shows = [
   {
+    day: "11",
+    month: "OCT",
+    dateLabel: "Sunday 11 October 2026",
+    event: "Spiritual Bar, Camden",
+    venue: "4 Ferdinand St",
+    time: "8:30pm",
+  },
+  {
     day: "6",
     month: "SEP",
     dateLabel: "Sunday 6 September 2026",
     event: "Faversham Hop Festival",
     venue: "The Alex Bar",
     time: "3:00pm",
+    archived: true,
+    videoUrl: "https://www.youtube.com/watch?v=4O1ej9EHAR4&list=PLMdB24jcbg-uD1AeKZVm3LxQaAX_PQ4K2",
   },
 ];
 ---
@@ -86,15 +96,21 @@ const shows = [
       {shows.length > 0 ? (
         <ul class="show-list">
           {shows.map((s) => (
-            <li class="show-card">
+            <li class={`show-card${s.archived ? " show-card--archived" : ""}`}>
               <div class="show-card__date">
                 <span class="show-card__day">{s.day}</span>
                 <span class="show-card__month">{s.month}</span>
               </div>
               <div class="show-card__details">
+                {s.archived && <p class="show-card__status">Played</p>}
                 <p class="show-card__event">{s.event}</p>
                 <p class="show-card__meta">{s.venue} · {s.time}</p>
                 <p class="show-card__datelabel">{s.dateLabel}</p>
+                {s.videoUrl && (
+                  <a class="show-card__link" href={s.videoUrl} target="_blank" rel="noreferrer">
+                    Watch the full set on YouTube
+                  </a>
+                )}
               </div>
             </li>
           ))}
@@ -107,9 +123,15 @@ const shows = [
     </section>
 
     <section class="live-band" aria-labelledby="band-heading">
-      <h2 class="section-label" id="band-heading">Looking for a band</h2>
+      <h2 class="section-label" id="band-heading">Live sessions</h2>
       <p class="live-band__text">
-        The Traveller Project began solo, but is now looking for a drummer, bassist &amp; guitarist to take it to the next level. I have written about 20 songs for the project that take it in a new acoustic rock direction. They need a band to bring them to life. Think Alice In Chains &amp; Staind acoustic, early Coldplay, the gentler side of RHCP. <a href="/contact/">Get in contact</a> if you're interested!
+        I'm recording live acoustic versions of my songs in one take. Each one comes out as a single with a video, and together they'll build into a live album from a bunch of different places.
+      </p>
+      <p class="live-band__text">
+        It's hard to trust what you see and hear online these days. It's overwhelming, and it's taking the soul out of art. Music has been heavily edited for years. This is my small contribution against the flow of overly edited short-form content wherever you look.
+      </p>
+      <p class="live-band__text">
+        To make more of them I'm looking for cool spaces, more gigs, and a cajon player for a few of the songs. If you've got a space, a place I can play, or a cajon, <a href="/contact/">get in contact</a>.
       </p>
       <p class="live-band__byline">- Josh</p>
     </section>
