@@ -14,12 +14,22 @@ const videos = [
 
 const shows = [
   {
+    day: "29",
+    month: "NOV",
+    dateLabel: "Sunday 29 November 2026",
+    event: "The Star, Shoreditch",
+    venue: "London",
+    time: "Evening",
+    note: "Tickets coming soon",
+  },
+  {
     day: "11",
     month: "OCT",
     dateLabel: "Sunday 11 October 2026",
     event: "Spiritual Bar, Camden",
     venue: "4 Ferdinand St",
     time: "8:30pm",
+    archived: true,
   },
   {
     day: "6",
@@ -106,6 +116,7 @@ const shows = [
                 <p class="show-card__event">{s.event}</p>
                 <p class="show-card__meta">{s.venue} · {s.time}</p>
                 <p class="show-card__datelabel">{s.dateLabel}</p>
+                {s.note && <p class="show-card__note">{s.note}</p>}
                 {s.videoUrl && (
                   <a class="show-card__link" href={s.videoUrl} target="_blank" rel="noreferrer">
                     Watch the full set on YouTube
